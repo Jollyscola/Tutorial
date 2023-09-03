@@ -1,0 +1,41 @@
+.slider-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: #fff;
+   border-radius: 8px;
+   box-shadow: 0px 0px 10xp rgba(0, 0, 0, 0.2);
+   padding: 0 20px 20px 20px;
+
+      /* Add styles for slider titles */
+   .slider h2 {
+      font-size: 20px;
+      margin-top:0px;
+      margin-bottom: 10px;
+      color: #333; /* Text color for titles */
+   }
+
+   iframe {
+       margin-bottom: 20px;
+       border-radius: 8px;
+       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+   }
+
+   .button-container {
+       button {
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+           margin: 0 10px;
+           background-color: #007bff;
+           color: #fff;
+           border: none;
+           border-radius: 4px;
+           transition: background-color 0.3s ease;
+
+           &:hover {
+               background-color: #0056b3;
+           }
+       }
+   }
+}

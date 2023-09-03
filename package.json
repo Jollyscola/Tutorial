@@ -1,0 +1,33 @@
+{
+  "name": "tutorial",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "gulp": "gulp",
+    "typescript": "npx tsc",
+    "start": "lite-server",
+    "build": "webpack --mode production && cp -R data dist && cp index.html css/*.css dist && cp -R images dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-purgecss": "^5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "html-loader": "^4.2.0",
+    "lite-server": "^2.6.1",
+    "sass": "^1.66.1",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "shepherd.js": "^11.1.1",
+    "forms42core": "file:../core/dist"
+  }
+}

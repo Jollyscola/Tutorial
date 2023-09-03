@@ -1,0 +1,14 @@
+{
+   "compilerOptions": {
+     "target": "es6",
+     "module": "esnext",
+     "moduleResolution": "node",
+     "outDir": "dist",
+     "strict": false,
+     "esModuleInterop": true,
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "forceConsistentCasingInFileNames": true,
+     "declaration": true,
+   }
+ }
