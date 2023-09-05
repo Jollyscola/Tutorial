@@ -21,6 +21,7 @@ export class Intro
         this.intro.addStep({
           id: 'step1',
           text: 'Welcome too the tour',
+          
           buttons: [
             {
               text: 'Next',
@@ -34,6 +35,10 @@ export class Intro
           text: 'let us start',
  
           buttons: [
+            {
+              text: 'Back', 
+              action: this.intro.back,
+            },
             {
               text: 'Next',
               action: this.intro.next
@@ -50,6 +55,10 @@ export class Intro
           },
           buttons: [
             {
+              text: 'Back', 
+              action: this.intro.back,
+            },
+            {
               text: 'Next',
               action: this.intro.next
             }
@@ -65,7 +74,11 @@ export class Intro
           },
           buttons: [
             {
-              text: 'Next',
+              text: 'Back', 
+              action: this.intro.back,
+            },
+            {
+              text: 'Finsh',
               action: this.intro.next
             }
           ]

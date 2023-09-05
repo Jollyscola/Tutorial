@@ -2,8 +2,7 @@
   "name": "tutorial",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
+  "description": "tutorial about futureforms",
   "scripts": {
     "gulp": "gulp",
     "typescript": "npx tsc",

@@ -25,7 +25,7 @@ import { FormsModule as FormsCoreModule, FormsPathMapping } from 'forms42core';
 
 import { Route } from  './Route';
 import { Intro } from './Tour/Intro';
-import { ImageSlider } from './Images';
+import { youtubeSlider } from './youtube';
 
 
 @FormsPathMapping
@@ -36,36 +36,32 @@ import { ImageSlider } from './Images';
 export class FormsModule extends FormsCoreModule
 {
    intro:Intro = null;
-   Route:Route = null;
-   gallery:ImageSlider = null;
+   route:Route = null;
+   gallery:youtubeSlider = null;
    constructor()
    {
       super();
       this.setup();
-  
-      this.intro = new Intro();
-      this.Route = new Route();
-      // window.addEventListener('DOMContentLoaded', () => {
-         this.gallery = new ImageSlider();
-   //   });
+     
+       
+        this.route = new Route();
+        this.intro = new Intro();
+        this.gallery = new youtubeSlider(this.route.contentDiv);
    }
-
-   
-
-   private async setup()
-   {
-
+  private async setup() 
+  {
+    try {
       await DataLoader.load();
-      let parse:boolean = true;
+      let parse: boolean = true;
 
-      if (parse)
-      {
-         this.parse(document.body);
+      if (parse) {
+        this.parse(document.body);
+      } else {
+        let view: HTMLElement = document.querySelector('form');
+        await this.createform(MasterDetail, view);
       }
-      else
-      {
-         let view:HTMLElement = document.querySelector('form');
-         await this.createform(MasterDetail,view);
-      }
-   }
+    } catch (error) {
+      console.error('Error during setup:', error);
+    }
+  }
 }

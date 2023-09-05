@@ -1,3 +1,4 @@
+
 <div class="container">
    <div class="container_title">
       <label>Welcome too Tutorial about Futureforms </label>
@@ -10,29 +11,62 @@
          </div>
          <div class="columen_left_button">
             <button class="one" id="intro" onclick="this.intro.startTour()" title="intro about how futureforms works">
-               intro
+               Intro
             </button>
             <button class="two" onclick="this.menus.startTour()" title="what the menus for">
-               menus 
+               Menus 
             </button>
             <button class="three" onclick="this.forms.startTour()" title="how the forms working">
-              Forms search
+              Forms
+            </button>
+            <button class="one" id="intro" onclick="this.intro.startTour()" title="intro about how futureforms works">
+               Search
+            </button>
+            <button class="two" onclick="this.menus.startTour()" title="what the menus for">
+              More search
+            </button>
+            <button class="three" onclick="this.forms.startTour()" title="how the forms working">
+               Create
             </button>
          </div> 
       </div>
       <div class="columen_right">
-         <label class="title">youtube clip</label>
-         <div class="columen_right_infomation">
-            See step by step tutorial in guide from youtube.
-         </div>
          <div class="slider-container">
+            <label class="title">youtube clip</label>
+            <div class="columen_right_infomation">
+               See step by step tutorial in guide from youtube.
+            </div>
             <h2 id="youtube-title">Slider Title 1</h2>
-            <iframe id="youtube-player" width="400" height="250" src="https://www.youtube.com/embed/T33NN_pPeNI" frameborder="0" allowfullscreen></iframe>
+            <iframe id="youtube-player" width="400" height="250" src="https://www.youtube.com/embed/mzgHQUjxlBg" frameborder="0" allowfullscreen></iframe>
             <div class="button-container">
+               <div class="radio-buttons">
+                  <input type="radio" name="slider" id="slider-1"  checked>
+                  <label for="slider-1"></label>
+                  <input type="radio" name="slider" id="slider-2" >
+                  <label for="slider-2"></label>
+                  <input type="radio" name="slider" id="slider-3">
+                  <label for="slider-3"></label>
+              </div>
                 <button id="prev-button" onclick="this.gallery.prevVideo()">Previous</button>
                 <button id="next-button" onclick="this.gallery.nextVideo()">Next</button>
             </div>
         </div>
+        <div class="video-container">
+            <iframe
+               width="180" 
+               height="90" 
+               src="https://www.youtube.com/embed/mzgHQUjxlBg"
+               frameborder="0"
+               allowfullscreen
+            ></iframe>
+            <iframe
+               width="180"   
+               height="90" 
+               src="https://www.youtube.com/embed/SgmNxE9lWcY"
+               frameborder="0"
+               allowfullscreen
+            ></iframe>
+         </div>
      </div>
       </div>
    </div>

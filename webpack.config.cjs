@@ -1,5 +1,6 @@
 module.exports =
 {
+  devtool: "eval-source-map",
   entry: './index.ts',
   output:
   {
@@ -30,5 +31,11 @@ module.exports =
   resolve:
   {
     extensions: ['.ts','.js']
+  },
+  performance:
+  {
+    hints: false,
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000
   }
 }
