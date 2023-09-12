@@ -1,41 +1,39 @@
-module.exports =
-{
-  devtool: "eval-source-map",
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  devtool: 'source-map',
+  mode: "development",
   entry: './index.ts',
-  output:
-  {
+  output: {
     path: __dirname+'/dist',
-    filename: 'index.js',
-    library: "forms42core",
+    filename: 'index.js', 
   },
-  module:
-  {
-    rules:
-    [
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html',
+    }),
+  ],
+  module: {
+    rules: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        use:
-        {
-          loader: 'ts-loader'
-        }
-      }
-      ,
+        use: 'ts-loader',
+      },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        use: 'html-loader',
       }
-    ]
-  }
-  ,
-  resolve:
-  {
-    extensions: ['.ts','.js']
+    ],
   },
-  performance:
-  {
+  resolve: {
+    extensions: ['.js', '.ts']
+  },
+  performance: {
     hints: false,
     maxAssetSize: 512000,
-    maxEntrypointSize: 512000
-  }
-}
+    maxEntrypointSize: 512000,
+  },
+};

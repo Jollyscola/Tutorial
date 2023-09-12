@@ -6,19 +6,23 @@
   "scripts": {
     "gulp": "gulp",
     "typescript": "npx tsc",
-    "start": "lite-server",
-    "build": "webpack --mode production && cp -R data dist && cp index.html css/*.css dist && cp -R images dist"
+    "start": "lite-server ",
+    "build": "webpack --mode production && cp index.html dist && cp -R images dist && cp css/styles.css dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
     "gulp": "^4.0.2",
     "gulp-purgecss": "^5.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
     "lite-server": "^2.6.1",
+    "node-fetch": "^3.3.2",
     "sass": "^1.66.1",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",
@@ -26,7 +30,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "shepherd.js": "^11.1.1",
-    "forms42core": "file:../core/dist"
+    "shepherd.js": "^11.2.0"
   }
 }

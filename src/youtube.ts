@@ -19,11 +19,14 @@ export class youtubeSlider
             { title: 'Slider Title 2', videoIds: 'SgmNxE9lWcY' },
             { title: 'Slider Title 3', videoIds:  'L3azzI6gqm0' },
         ];
-        console.log(contentDiv)
 
-        this.radioButtons = contentDiv.querySelectorAll('input[type="radio"]') as NodeListOf<HTMLInputElement>;
+        this.radioButtons = contentDiv.querySelectorAll('input[name="slider"]') as NodeListOf<HTMLInputElement>;
 
-        console.log(this.radioButtons)
+        const prevbutton = document.querySelector("#prev-button") as HTMLInputElement;
+        const nextbutton = document.querySelector("#next-button") as HTMLInputElement;
+
+        prevbutton.addEventListener("click", () => this.prevVideo());
+        nextbutton.addEventListener("click", () => this.nextVideo());
 
         this.setupRadioButtons();
     }
@@ -56,6 +59,7 @@ export class youtubeSlider
  
     public prevVideo(): void 
     {
+        console.log("prev")
         this.loadVideo(this.currentVideoIndex - 1);
     }
 

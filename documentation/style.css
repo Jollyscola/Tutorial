@@ -1,0 +1,132 @@
+html, body
+{
+   margin: 0;
+	height: 100%;
+	overflow-x: hidden;
+	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.page
+{
+   height: 100%;
+   width: 100%;
+   position: relative;
+}
+
+.app-page
+{
+	display: grid;
+	grid-auto-flow: column;
+	height: calc(100vh - 80px);
+	grid-template-columns: fit-content(30%);
+}
+
+.app-header
+{
+	width: 100%;
+	height: 40px;
+	padding:0 10px;
+	align-items: center;
+	display: inline-grid;
+	grid-auto-flow: column;
+	grid-template-columns: 125px 1fr 150px;
+}
+
+.form-area
+{
+	display:grid;
+	position: relative;
+}
+
+
+.page img 
+{
+   z-index: -1;
+   top:0;
+   left:0;
+   position: absolute;
+}
+
+.topbar
+{
+	height: 100%;
+   z-index: 1;
+	display:flex;
+	font-size:18px;
+	color: white;
+	cursor: default;
+	list-style: none;
+	user-select: none;
+	justify-content: center;
+}
+
+.topbar .top-menu
+{
+	margin:0;
+	font-size:13px;
+	padding:0 13px;
+	cursor: default;
+	margin-left:50px;
+	font-weight: bold;
+	position: relative;
+	list-style: none;
+	display:inline-flex;
+	align-items: center;
+}
+
+.topbar menu[name="top-menu"] li
+{
+	display:flex;
+	position: relative;
+}
+
+.left-menu
+{
+	width:150px;
+}
+
+.topbar .top-menu li
+{
+	width:100px;
+	display:flex;
+	height: 100%;
+	padding:0 10px;
+	position: relative;
+}
+
+
+.image-container img {
+	height: 100%;
+	display: block;
+	max-width: 100%;
+}
+
+.image-container {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.form
+{
+	top: 200px;
+	left: 475px;
+	width: 800px;
+	display: flex;
+	height: 400px;
+	position: absolute;
+}
+
+.github
+{
+	width: 100%;
+	height: 100%;
+}
+
+.github a
+{
+	width: 100%;
+	height: 100%;
+}

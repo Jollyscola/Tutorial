@@ -13,7 +13,7 @@ body
 
 .page
 {
-	height: 80vh;
+	height: 90vh;
 	display: grid;
 	background: #d0d0d0;
 	grid-auto-flow: column;
@@ -66,6 +66,11 @@ body
 	}
 }
 
+.hans
+{
+	background-color: black;
+}
+
 .container
 {
 	display:grid;
@@ -78,6 +83,8 @@ body
 .futreforms_title
 {
 	display:flex;
+	position: relative;
+	text-align: center;
 	justify-content: center;
 	background-color: lavender;
 }
