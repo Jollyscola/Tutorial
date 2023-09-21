@@ -5,8 +5,8 @@
   "description": "tutorial about futureforms",
   "scripts": {
     "gulp": "gulp",
+    "live": "live-server && cd documentation && live-server",
     "typescript": "npx tsc",
-    "start": "lite-server ",
     "build": "webpack --mode production && cp index.html dist && cp -R images dist && cp css/styles.css dist"
   },
   "keywords": [],
@@ -21,7 +21,6 @@
     "gulp-sass": "^5.1.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
-    "lite-server": "^2.6.1",
     "node-fetch": "^3.3.2",
     "sass": "^1.66.1",
     "ts-loader": "^9.4.4",
@@ -30,6 +29,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "live-server": "^1.2.2",
     "shepherd.js": "^11.2.0"
   }
 }

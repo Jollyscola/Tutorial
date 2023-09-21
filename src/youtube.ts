@@ -1,44 +1,60 @@
 
 
+interface Video {
+  image: string;
+  title: string;
+  videoIds: string;
+}
+
 
 export class youtubeSlider 
 {
-    private videos: {title: string; videoIds: string}[] = null;
-    private youtubetitle: HTMLLabelElement;
-    private youtubePlayer: HTMLIFrameElement;
-    private currentVideoIndex: number = null;
-    private radioButtons: NodeListOf<HTMLInputElement> = null;
-    
+
+  private youtubePlayer: HTMLFormElement;
+  private youtubetitle: HTMLLabelElement;
+  private smallVideo: NodeListOf<HTMLImageElement> = null;
+  private radioButtons: NodeListOf<HTMLInputElement> = null;
+  private videos: Video[] = null;
+  private currentVideoIndex: number = 0;
+
     constructor(contentDiv:HTMLElement) 
     {
-        this.currentVideoIndex = 0;
 
         this.videos = 
         [
-            { title: 'Slider Title 1', videoIds: 'mzgHQUjxlBg' },
-            { title: 'Slider Title 2', videoIds: 'SgmNxE9lWcY' },
-            { title: 'Slider Title 3', videoIds:  'L3azzI6gqm0' },
+            { image:'dist/images/image1.jpg',title:  'Slider Title 1', videoIds: 'mzgHQUjxlBg' },
+            { image:'dist/images/image2.jpg', title: 'Slider Title 2', videoIds: 'SgmNxE9lWcY' },
+            { image:'dist/images/image3.jpg', title: 'Slider Title 3', videoIds:  'L3azzI6gqm0' },
         ];
 
+        
+        this.youtubetitle = contentDiv.querySelector('#youtube-title') as HTMLLabelElement;
+        this.youtubePlayer = contentDiv.querySelector('#youtube-player') as HTMLFormElement;
+        this.smallVideo = contentDiv.querySelectorAll(".video-container img") as NodeListOf<HTMLImageElement>;
         this.radioButtons = contentDiv.querySelectorAll('input[name="slider"]') as NodeListOf<HTMLInputElement>;
 
-        const prevbutton = document.querySelector("#prev-button") as HTMLInputElement;
-        const nextbutton = document.querySelector("#next-button") as HTMLInputElement;
+        this.smallVideo.forEach((image) =>
+        {
+          image.addEventListener('click', () => this.selectVideo(image.id))
+        })
 
-        prevbutton.addEventListener("click", () => this.prevVideo());
-        nextbutton.addEventListener("click", () => this.nextVideo());
-
-        this.setupRadioButtons();
+        this.RadioButtons();
     }
 
-    private setupRadioButtons(): boolean 
+    private getVideoById(id: string): Video 
+    {
+      let find =  this.videos.find(video => video.videoIds === id);
+      return find;
+    }
+
+    private RadioButtons(): boolean 
     {
         try 
         {
           this.radioButtons.forEach((radio, index) => {
             radio.addEventListener('change', () => {
               if (radio.checked) {
-                this.selectSlider(index);
+                this.selectRadio(index.toString());
               }
             });
           });
@@ -52,36 +68,40 @@ export class youtubeSlider
         }
     }
 
-    private selectSlider(index: number): void 
-    {
-        this.loadVideo(index);
+    private selectVideo(index: string): void {
+
+      let link:any =  this.youtubePlayer 
+      let image: HTMLImageElement = link.children[0] as HTMLImageElement;
+
+      let video = this.getVideoById(index);
+      let indexnumber = this.videos.findIndex(video => video.videoIds === index);
+
+      link.href = video;
+      image.src = video.image;
+
+      this.youtubetitle.textContent = video.title;
+      this.radioButtons[indexnumber].checked = true;
     }
  
-    public prevVideo(): void 
+ 
+    private selectRadio(index: string): boolean 
     {
-        console.log("prev")
-        this.loadVideo(this.currentVideoIndex - 1);
-    }
+        
+            let link:any =  this.youtubePlayer 
+            let image: HTMLImageElement = link.children[0] as HTMLImageElement;
+            
+            let video = this.getVideoById(this.videos[index].videoIds);
+           
 
-    public nextVideo(): void 
-    {
-        this.loadVideo(this.currentVideoIndex + 1);
-    }
-  
-    private loadVideo(index: number): void 
-    {
-        this.youtubetitle = document.getElementById('youtube-title') as HTMLLabelElement;
-        this.youtubePlayer = document.getElementById('youtube-player') as HTMLIFrameElement;
-        this.radioButtons = document.querySelectorAll('input[name="slider"]') as NodeListOf<HTMLInputElement>;
+            link.href = video;
+            image.src = video.image;
 
-        if (index >= 0 && index < this.videos.length) 
-        {
-            const videoId = this.videos[index];
-            this.youtubetitle.textContent = videoId.title;
-            const videoUrl = 'https://www.youtube.com/embed/' + videoId.videoIds;
-            this.youtubePlayer.src = videoUrl;
-            this.currentVideoIndex = index;
+            this.youtubetitle.textContent = video.title;
+            const videoUrl = 'https://www.youtube.com/embed/' + video.videoIds;
+            this.youtubePlayer.href = videoUrl;
+
             this.radioButtons[index].checked = true;
-        }
+
+            return true;
     }
 }

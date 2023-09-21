@@ -2,9 +2,10 @@ import Shepherd from 'shepherd.js';
 
 export class Intro
 {
+   page: HTMLElement = null;
    intro:Shepherd.Tour = null;
    iframe:HTMLIFrameElement = null;
-
+   introbutton:HTMLButtonElement = null;
    headers = null;
 
    constructor()
@@ -20,17 +21,14 @@ export class Intro
          }
        });
 
-       this.iframe = document.querySelector("#myIframe");
+       this.iframe = document.querySelector("#myIframe") as HTMLIFrameElement;
+       this.introbutton = document.querySelector("#intro") as HTMLButtonElement;
 
+       this.introbutton.addEventListener("click", ()=> this.startIntrotour())
 
-          console.log(this.iframe)
-          console.log(this.iframe.contentWindow.document)
-          let container = this.iframe.contentWindow.document.querySelector(".introtour");
-          console.log(container)
-
-
-       this.tour();
+       this.page = this.iframe.contentDocument.querySelector(".page")
        
+       this.tour();
    }
 
    public startIntrotour(): void
@@ -69,43 +67,43 @@ export class Intro
           ]
         });
 
-        // this.intro.addStep({
-        //   id: 'step3',
-        //   text: 'this is the page where u can enjoy ',
-        //   attachTo: {
-        //     element: '#futureforms',
-        //     on: 'bottom'
-        //   },
-        //   buttons: [
-        //     {
-        //       text: 'Back', 
-        //       action: this.intro.back,
-        //     },
-        //     {
-        //       text: 'Next',
-        //       action: this.intro.next
-        //     }
-        //   ]
-        // });
+        this.intro.addStep({
+          id: 'step3',
+          text: 'this is the page where u can enjoy ',
+          attachTo: {
+            element: this.page,
+            on: 'bottom'
+          },
+          buttons: [
+            {
+              text: 'Back', 
+              action: this.intro.back,
+            },
+            {
+              text: 'Next',
+              action: this.intro.next
+            }
+          ]
+        });
 
-        // this.intro.addStep({
-        //   id: 'step4',
-        //   text: 'this too connection',
-        //   attachTo: {
-        //     element: '#connection',
-        //     on: 'bottom'
-        //   },
-        //   buttons: [
-        //     {
-        //       text: 'Back', 
-        //       action: this.intro.back,
-        //     },
-        //     {
-        //       text: 'Finsh',
-        //       action: this.intro.next
-        //     }
-        //   ]
-        // });
+        this.intro.addStep({
+          id: 'step4',
+          text: 'this too connection',
+          attachTo: {
+            element: this.page.querySelector("#connection") as HTMLElement,
+            on: 'bottom'
+          },
+          buttons: [
+            {
+              text: 'Back', 
+              action: this.intro.back,
+            },
+            {
+              text: 'Finsh',
+              action: this.intro.next
+            }
+          ]
+        });
     }
 
   
