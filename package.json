@@ -29,6 +29,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "intro.js": "^7.2.0",
     "live-server": "^1.2.2",
     "shepherd.js": "^11.2.0"
   }

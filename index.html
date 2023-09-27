@@ -3,8 +3,8 @@
    <title>Index</title>
    <link  rel="stylesheet"  href="css/styles.css" />
    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/>
-   
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.0.0/introjs.min.css" rel="stylesheet">
+  
    <meta charset="UTF-8">
    <meta HTTP-EQUIV="Access-Control-Allow-Origin" CONTENT="*">
 </head>
@@ -16,25 +16,37 @@
       </a>
    </div>
    <div class="page">
-      <div class="top-left-menu">
-         <nav id="main-nav" class="top-left-menu-container">
-            <div class="nav">
-               <i class="fas fa-home"></i>
-               <a href="/" class="route-nav-link" data-route="/">Home</a>
-            </div>
-            <div class="nav">
-               <i class="fab fa-hire-a-helper"></i>
-               <a href="/texthelp" class="route-nav-link" data-route="/texthelp" >Text Help</a>
-            </div>
+      <div class="left-menu">
+         <nav id="main-nav" class="left-menu-container">
+            <ul class="menu">
+               <li class="nav">
+                  <i class="fas fa-home"></i>
+                  <a href="/" class="route-nav-link" data-route="/">Home</a>
+               </li>
+               <li class="nav">
+                  <i class="fab fa-hire-a-helper"></i>
+                  <a href="/texthelp" class="route-nav-link" data-route="/texthelp" >Text Help</a>
+               </li>
+               <li class="nav">
+                  <i class="fab fa-hire-a-helper"></i>
+                  <a href="/quiz" class="route-nav-link" data-route="/quiz" >Quiz</a>
+               </li>
+            </ul>
+            <ul class="menu">
+               <li class="nav">
+                  <a href="https://www.miracle42.dk/services/futureforms" class="route-nav-link" target="_blank">Content: Mirecale-42</a>
+               </li>
+            </ul>
          </nav>
+         <nav></nav>
       </div>
-      <div id="main-page">
+      <div id="main-page" class="main-page">
       </div>
    </div>
    <div class="futreforms_title">
       <h1>Under here is FutureForms Tutorial</h1>
    </div>
-   <iframe id="myIframe" src="http://127.0.0.1:5501/documentation/welcometothetour.html" scrolling="no" style="width: 100%; height: 100%; border: 0"></iframe>
+   <iframe id="myIframe" src="http://127.0.0.1:5501/documentation/welcometothetour.html" scrolling="no" ></iframe>
 
 
  <script src="dist/index.js"></script>

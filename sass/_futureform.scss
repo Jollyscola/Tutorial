@@ -445,27 +445,3 @@ input[mode="insert"]
 	background-image: url(images/insert.png);
 }
 
-.container404 
-{
-	display:flex;
-	padding: 20px;
-	flex-wrap: wrap;
-	text-align: center;
-	border-radius: 8px;
-	align-content: center;
-	justify-content: center;
-	background-color: #fff;
-	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
-	h1 {
-		 font-size: 36px;
-		 color: #ff6347;
-		 margin-bottom: 10px;
-	}
-
-	p {
-		 font-size: 18px;
-		 color: #333;
-		 margin-bottom: 20px;
-	}
-}

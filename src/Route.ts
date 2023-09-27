@@ -17,8 +17,9 @@ export class Route implements EventListenerObject {
     this.navLinks = document.querySelectorAll('a[data-route]');
 
     this.routes = {
-      '404': 'src/pages/404.html',
       '/': 'src/pages/home.html',
+      '404': 'src/pages/404.html',
+      '/quiz' : 'src/pages/quiz.html',
       '/texthelp': 'src/pages/texthelp.html',
     };
 
@@ -41,7 +42,8 @@ export class Route implements EventListenerObject {
   private handleLinkClick(event: MouseEvent) : void
   {
     const target = event.target as HTMLAnchorElement;
-    if (target.tagName === 'A' && target.hasAttribute('data-route')) {
+    if (target.tagName === 'A' && target.hasAttribute('data-route')) 
+    {
       event.preventDefault();
       this.navigate(target.getAttribute('data-route') || '/');
     }

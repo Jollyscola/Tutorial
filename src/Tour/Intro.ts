@@ -1,110 +1,56 @@
-import Shepherd from 'shepherd.js';
+import introJs from "intro.js";
 
-export class Intro
+export class Intro 
 {
-   page: HTMLElement = null;
-   intro:Shepherd.Tour = null;
-   iframe:HTMLIFrameElement = null;
-   introbutton:HTMLButtonElement = null;
-   headers = null;
 
-   constructor()
-   {
+  headers:any = null;
+  intro: any = null;
+  page: HTMLElement = null;
+  leftmenu: HTMLElement = null;
+  connection: HTMLElement = null;
+  iframe: HTMLIFrameElement = null;
+  introbutton: HTMLButtonElement = null;
 
-    this.headers =  {'Access-Control-Allow-Origin': '*'} 
-    
-      this.intro = new Shepherd.Tour({
-         useModalOverlay: true,
-         defaultStepOptions: {
-           classes: 'shadow-md bg-purple-dark',
-           scrollTo: true
-         }
-       });
-
-       this.iframe = document.querySelector("#myIframe") as HTMLIFrameElement;
-       this.introbutton = document.querySelector("#intro") as HTMLButtonElement;
-
-       this.introbutton.addEventListener("click", ()=> this.startIntrotour())
-
-       this.page = this.iframe.contentDocument.querySelector(".page")
-       
-       this.tour();
-   }
-
-   public startIntrotour(): void
-   {
-     this.intro.start()
-   }
-    
-
-   private tour(): void
+  constructor() 
   {
-        this.intro.addStep({
-          id: 'step1',
-          text: 'Welcome too the tour',
-          
-          buttons: [
-            {
-              text: 'Next',
-              action: this.intro.next
-            }
-          ]
-        });
+    
+    this.iframe = document.querySelector("#myIframe") as HTMLIFrameElement;
+    this.page = this.iframe.contentDocument.body.querySelector(".image_container") as HTMLDivElement;
+
+    this.leftmenu = this.page.querySelector("#leftmenu") as HTMLDivElement;
+    this.introbutton = document.querySelector("#intro") as HTMLButtonElement;
+    this.connection = this.page.querySelector("#connection") as HTMLDivElement;
         
-        this.intro.addStep({
-          id: 'step2',
-          text: 'let us start',
- 
-          buttons: [
-            {
-              text: 'Back', 
-              action: this.intro.back,
-            },
-            {
-              text: 'Next',
-              action: this.intro.next
-            }
-          ]
-        });
+    this.intro = introJs();
+    
+    this.introbutton.addEventListener("click", () => this.tour());
+    
+    if (this.intro) 
+    {
+      this.tour(); 
+      }
+       else 
+      {
+        console.error("Intro.js instance is null.");
+      }
+  }
 
-        this.intro.addStep({
-          id: 'step3',
-          text: 'this is the page where u can enjoy ',
-          attachTo: {
-            element: this.page,
-            on: 'bottom'
-          },
-          buttons: [
-            {
-              text: 'Back', 
-              action: this.intro.back,
-            },
-            {
-              text: 'Next',
-              action: this.intro.next
-            }
-          ]
-        });
 
-        this.intro.addStep({
-          id: 'step4',
-          text: 'this too connection',
-          attachTo: {
-            element: this.page.querySelector("#connection") as HTMLElement,
-            on: 'bottom'
-          },
-          buttons: [
-            {
-              text: 'Back', 
-              action: this.intro.back,
-            },
-            {
-              text: 'Finsh',
-              action: this.intro.next
-            }
-          ]
-        });
+  private tour(): void 
+  {
+
+    this.intro.setOptions(
+      {
+      steps: 
+      [
+        {
+          element:document.querySelector(".main-page"),
+          title: 'Welcome',
+          intro: 'Hello World! 👋'
+        }
+      ],
     }
-
-  
+    )
+    .start();
+  }
 }

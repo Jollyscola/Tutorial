@@ -51,8 +51,10 @@ export class youtubeSlider
     {
         try 
         {
-          this.radioButtons.forEach((radio, index) => {
-            radio.addEventListener('change', () => {
+          this.radioButtons.forEach((radio, index) => 
+          {
+            radio.addEventListener('change', () => 
+            {
               if (radio.checked) {
                 this.selectRadio(index.toString());
               }
@@ -68,7 +70,8 @@ export class youtubeSlider
         }
     }
 
-    private selectVideo(index: string): void {
+    private selectVideo(index: string): void 
+    {
 
       let link:any =  this.youtubePlayer 
       let image: HTMLImageElement = link.children[0] as HTMLImageElement;
