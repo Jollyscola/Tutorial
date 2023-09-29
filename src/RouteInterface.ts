@@ -3,4 +3,12 @@ interface RouteMap
   [key: string]: string;
 }
 
-export {RouteMap}
+interface Video 
+{
+  image: string;
+  title: string;
+  videoIds: string;
+}
+
+
+export {RouteMap,Video}

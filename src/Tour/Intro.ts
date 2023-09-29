@@ -24,15 +24,6 @@ export class Intro
     this.intro = introJs();
     
     this.introbutton.addEventListener("click", () => this.tour());
-    
-    if (this.intro) 
-    {
-      this.tour(); 
-      }
-       else 
-      {
-        console.error("Intro.js instance is null.");
-      }
   }
 
 
@@ -44,13 +35,20 @@ export class Intro
       steps: 
       [
         {
-          element:document.querySelector(".main-page"),
           title: 'Welcome',
           intro: 'Hello World! 👋'
-        }
+        },
+        {
+          title: 'let us giv a tour into futurefroms',
+          intro: 'Let us start'
+        },
+        {
+          element: this.page,
+          title: 'this is page',
+          intro: 'this the page about futureforms'
+        },
       ],
     }
-    )
-    .start();
+    ).start();
   }
 }

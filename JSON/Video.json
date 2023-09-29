@@ -1,0 +1,17 @@
+[
+   {
+       "image": "dist/images/image1.jpg",
+       "title": "Slider Title 1",
+       "videoIds": "mzgHQUjxlBg"
+   },
+   {
+       "image": "dist/images/image2.jpg",
+       "title": "Slider Title 2",
+       "videoIds": "SgmNxE9lWcY"
+   },
+   {
+       "image": "dist/images/image3.jpg",
+       "title": "Slider Title 3",
+       "videoIds": "L3azzI6gqm0"
+   }
+]
