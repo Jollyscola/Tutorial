@@ -9,46 +9,40 @@
    <meta HTTP-EQUIV="Access-Control-Allow-Origin" CONTENT="*">
 </head>
 <body>
+   <iframe id="myIframe" src="http://127.0.0.1:5501/documentation/welcometothetour.html" scrolling="no" ></iframe>
    <div class="header">
       <a href="/" class="header_title">Tutorial</a>
+      <nav id="main-nav" class="topbar">
+         <ul class="top-menu">
+            <li class="nav">
+               <i class="fas fa-home"></i>
+               <a href="/" class="route-nav-link" data-route="/">Home</a>
+            </li>
+            <li class="nav">
+               <i class="fab fa-hire-a-helper"></i>
+               <a href="/texthelp" class="route-nav-link" data-route="/texthelp" >Text Help</a>
+            </li>
+            <li class="nav">
+               <i class="fab fa-hire-a-helper"></i>
+               <a href="/quiz" class="route-nav-link" data-route="/quiz" >Quiz</a>
+            </li>
+         </ul>
+         <!-- <ul class="menu">
+            <li class="nav">
+               <a href="https://www.miracle42.dk/services/futureforms" class="route-nav-link" target="_blank">Content: Mirecale-42</a>
+            </li>
+         </ul> -->
+      </nav>
       <a href="https://github.com/miracle-42/futureforms" class="github" target="_blank">
          <img src="images/github.png" alt="github" height="20px" >
       </a>
    </div>
    <div class="page">
-      <div class="left-menu">
-         <nav id="main-nav" class="left-menu-container">
-            <ul class="menu">
-               <li class="nav">
-                  <i class="fas fa-home"></i>
-                  <a href="/" class="route-nav-link" data-route="/">Home</a>
-               </li>
-               <li class="nav">
-                  <i class="fab fa-hire-a-helper"></i>
-                  <a href="/texthelp" class="route-nav-link" data-route="/texthelp" >Text Help</a>
-               </li>
-               <li class="nav">
-                  <i class="fab fa-hire-a-helper"></i>
-                  <a href="/quiz" class="route-nav-link" data-route="/quiz" >Quiz</a>
-               </li>
-            </ul>
-            <ul class="menu">
-               <li class="nav">
-                  <a href="https://www.miracle42.dk/services/futureforms" class="route-nav-link" target="_blank">Content: Mirecale-42</a>
-               </li>
-            </ul>
-         </nav>
-         <nav></nav>
-      </div>
+   
       <div id="main-page" class="main-page">
       </div>
    </div>
-   <div class="futreforms_title">
-      <h1>Under here is FutureForms Tutorial</h1>
-   </div>
-   <iframe id="myIframe" src="http://127.0.0.1:5501/documentation/welcometothetour.html" scrolling="no" ></iframe>
-
-
+  
  <script src="dist/index.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
 

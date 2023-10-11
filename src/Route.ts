@@ -1,11 +1,17 @@
-// import fetch from 'node-fetch';
 import { Intro } from './Tour/Intro';
-import { youtubeSlider } from './youtube';
 import { RouteMap } from "./RouteInterface";
+import {Quiz} from './pages/Quiz/Quizquuestion';
+import { Accordion } from './pages/Home/accordion';
+import { TextHelp } from './pages/Texthelp/texthelp';
+import { youtubeSlider } from './pages/Home/youtube';
 
-export class Route implements EventListenerObject {
+export class Route implements EventListenerObject 
+{
 
+  public quiz: Quiz  = null;
   public intro: Intro = null;
+  public homeaccordion = null;
+  public texhhelp: TextHelp = null;
   public gallery: youtubeSlider  = null;
   public contentDiv: HTMLElement  = null;
   private navLinks: NodeListOf<Element> = null;
@@ -17,10 +23,10 @@ export class Route implements EventListenerObject {
     this.navLinks = document.querySelectorAll('a[data-route]');
 
     this.routes = {
-      '/': 'src/pages/home.html',
       '404': 'src/pages/404.html',
-      '/quiz' : 'src/pages/quiz.html',
-      '/texthelp': 'src/pages/texthelp.html',
+      '/': 'src/pages/Home/home.html',
+      '/quiz' : 'src/pages/Quiz/quiz.html',
+      '/texthelp': 'src/pages/Texthelp/texthelp.html',
     };
 
     this.navLinks.forEach((link) => 
@@ -41,7 +47,7 @@ export class Route implements EventListenerObject {
 
   private handleLinkClick(event: MouseEvent) : void
   {
-    const target = event.target as HTMLAnchorElement;
+    let target = event.target as HTMLAnchorElement;
     if (target.tagName === 'A' && target.hasAttribute('data-route')) 
     {
       event.preventDefault();
@@ -49,25 +55,39 @@ export class Route implements EventListenerObject {
     }
   }
 
-  public navigate(path: string) : void 
+  public async navigate(path: string): Promise<void>
   {
-    const htmlPageURL = this.routes[path] || this.routes['404'];
+      let htmlPageURL = this.routes[path] || this.routes['404'];
+      let response = await fetch(htmlPageURL);
+      let html = await response.text();
 
-    fetch(htmlPageURL)
-      .then((response) => response.text())
-      .then((html) => {
-        this.updateURL(path);
-        this.updateContent(html);
-      })
+      this.updateContent(html,path);
   }
 
-  private updateContent(html: string) : void
+  private updateContent(html: string,path:string) : void
   {
+    
+    this.updateURL(path);
+
     if (this.contentDiv) {
       this.contentDiv.innerHTML = html;
 
-      this.intro = new Intro();
-      this.gallery = new youtubeSlider(this.contentDiv);
+      if(path == "/")
+      {
+        this.intro = new Intro();
+        this.gallery = new youtubeSlider(this.contentDiv);
+        this.homeaccordion = new Accordion(this.contentDiv);
+      }
+        
+      if(path == "/quiz")
+      {
+        this.quiz = new Quiz(this.contentDiv);
+      }
+
+      if(path == "/texthelp")
+      {
+        this.texhhelp = new TextHelp(this.contentDiv);
+      }
     }
   }
 
@@ -75,4 +95,6 @@ export class Route implements EventListenerObject {
   {
     window.history.pushState({}, '', path);
   }
+
 }
+

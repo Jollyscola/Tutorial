@@ -1,20 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
-  devtool: 'source-map',
-  mode: "development",
+  devtool: "eval-source-map",
   entry: './index.ts',
   output: {
     path: __dirname+'/dist',
     filename: 'index.js', 
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      filename: 'index.html',
-    }),
-  ],
   module: {
     rules: [
       {
@@ -29,7 +20,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts','.css']
   },
   performance: {
     hints: false,

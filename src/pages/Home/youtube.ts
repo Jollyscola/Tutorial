@@ -1,6 +1,6 @@
 
-import { Video } from "./RouteInterface";
-import VideoData from "../JSON/Video.json";
+import { Video } from "./youtubeinterface";
+import VideoData from "../../../JSON/Video.json";
 
 export class youtubeSlider 
 {
@@ -48,7 +48,7 @@ export class youtubeSlider
     } 
     catch (error) 
     {
-      console.error("Error setting up radio buttons:", error);
+      console.error("Fejl ved opsætning af radio buttons:", error);
       return false; 
     }
   }
