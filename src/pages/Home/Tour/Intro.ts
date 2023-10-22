@@ -52,7 +52,6 @@ export class Intro
 
       let titleElement = introtourElement.querySelector('#title') as HTMLLabelElement;
       let introElement = introtourElement.querySelector('#intro')as HTMLLabelElement;
-
       let elementElement = introtourElement.querySelector('#element') as HTMLLabelElement
  
       
@@ -66,13 +65,11 @@ export class Intro
           element = this.page.querySelector(elementElement.textContent) as HTMLElement;
 
           if(elementElement.textContent == ".image_container")
-          {
-            console.log(elementElement.textContent);
             element = this.page
-          }
         }
 
-        let introtour : IntroTour = {
+        let introtour : IntroTour = 
+        {
           title: titleElement.textContent,
           intro: introElement.textContent,
           element: element

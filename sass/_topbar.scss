@@ -1,0 +1,50 @@
+
+.topbar
+{
+	height: 100%;
+	display:flex;
+	font-size:18px;
+	color: white;
+	cursor: default;
+	user-select: none;
+	justify-content: center;
+}
+.topbar .top-menu li
+{
+   gap:5px;
+   display:flex;
+   height: 100%;
+   padding:0 10px;
+   align-items: center;
+}
+.topbar .top-menu li i
+{
+   cursor: pointer;
+}
+
+.topbar .top-menu li:hover
+{
+   background-color: red;
+}
+
+.topbar .top-menu
+{
+	margin:0;
+   height: 100%;
+	font-size:13px;
+	padding:0 13px;
+	cursor: default;
+	gap:5px;
+	font-weight: bold;
+	position: relative;
+	list-style: none;
+	display:inline-flex;
+	align-items: center;
+	background-color: transparent;
+}
+
+.topbar .top-menu li a
+{
+	color:white;
+	text-decoration: none;
+}

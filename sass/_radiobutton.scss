@@ -1,0 +1,58 @@
+
+ /* Styling for the radio buttons */
+ .radio_buttons input[type="radio"] 
+ {
+   display: none; /* Hide the radio input */
+ }
+
+
+.radio_buttons 
+{
+   margin-top:5px;
+   gap:20px;
+   display:flex; 
+
+   label 
+   {
+      margin: 5px;
+      cursor: pointer;
+      color: #fff;
+      position: relative;
+      border-radius: 25%;
+      padding: 10px 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      background-color:#007bff;
+   
+      &:not(:last-child)::before {
+         content: "";
+         width: 10px;
+         height: 10px;
+         position: absolute;
+         top: calc(50% - 6px);
+         left: calc(100% + 10px);
+         z-index: 1;
+         pointer-events: none;
+         background-color: #007bff;
+       }
+   
+       &:not(:last-child)::after {
+         content: "";
+         position: absolute;
+         top: calc(50% - 10px);
+         left: calc(100% + 20px);
+         border: solid transparent;
+         border-width: 10px;
+         border-left-color: #007bff;
+         z-index: 1;
+         pointer-events: none;
+       }
+    
+   }
+}
+
+ /* Styling for the selected label */
+ .radio_buttons input[type="radio"]:checked + label {
+   background-color: #0056b3;
+  
+ }

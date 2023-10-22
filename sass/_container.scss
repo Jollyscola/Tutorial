@@ -1,0 +1,21 @@
+
+.container
+{
+	display:grid;
+	grid-template-rows: 120px 1fr;
+   .container_title
+   {
+      display:flex;
+      font-weight: bold;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      h1
+      {
+         width:500px;
+         display:flex;
+         font-size: 30px;
+         justify-content: center;
+      }
+   }
+}

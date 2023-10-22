@@ -1,17 +1,17 @@
-/* Custom list container */
-.custom-list {
+
+.custom-list 
+{
    list-style-type: none;
    padding: 0;
    font-family: Arial, sans-serif;
  }
  
- /* Custom list item */
  .custom-item {
    margin-bottom: 15px;
  }
  
- /* Custom title */
- .custom-title {
+ .custom-title 
+ {
    cursor: pointer;
    font-weight: bold;
    color: #333;
@@ -22,9 +22,9 @@
    transition: background-color 0.3s ease;
  }
  
- /* Custom text */
- .custom-text {
-   display: none; /* Initially hide the text */
+ .custom-text 
+ {
+   display: none; 
    margin-top: 10px;
    padding: 10px;
    background-color: #f9f9f9;
@@ -43,23 +43,27 @@
    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
  }
  
- .custom-item.open .sub-list {
+ .custom-item.open .sub-list 
+ {
    max-height: 1000px; 
    opacity: 1;
  }
  
- .sub-list li {
+ .sub-list li 
+ {
    margin-bottom: 5px;
    color: #333;
    font-size: 16px;
  }
  
- .custom-title {
+ .custom-title 
+ {
    cursor: pointer;
  }
  
  
- .custom-text.open {
+ .custom-text.open 
+ {
    display: block; 
  }
  

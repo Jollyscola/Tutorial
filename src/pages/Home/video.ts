@@ -1,8 +1,8 @@
 
-import { Video } from "./youtubeinterface";
+import { Video } from "./videointerface";
 import VideoData from "../../../JSON/Video.json";
 
-export class youtubeSlider 
+export class videoslider 
 {
   private videos: Video[] = null;
   private youtubePlayer: HTMLFormElement;
