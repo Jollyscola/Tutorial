@@ -15,42 +15,56 @@
 {
 	display:grid;
    word-break: break-all;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+
 
    .columen_left
    {
-      width:500px;
+      width:600px;
       padding:20px;
       display:grid;
+      height: 690px;
       overflow: hidden;
       margin-left:20px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
       background-color: white;
 
       #readme_content
       {
-         max-height: 500px;
+         max-height: 800px;
          overflow-y: scroll;
       }
 
       pre 
       {
+         padding:5px;
          border:solid gray 1px;
-         padding:2px;
          background-color: rgb(56, 56, 56);
          color: white;
       }
    }
 
+   .block
+   {
+ 
+      height: 100%;
+      display:grid;
+      border-radius: 20px;
+      background-color: white;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+   }
+
    .columen_middle 
    {
 
+      gap:15px;
+      width:600px;
       display:grid;
-      border-radius: 20px;
-      padding:20px;
       margin-left: 20px;
       justify-content: center;
-      background-color: white;
-      grid-template-rows: 50px 85px 1fr;
+      grid-template-rows: 287px 425px;
+
 
       .columen_middle_infomation
       {
@@ -71,7 +85,7 @@
       border-radius: 20px;
       justify-content: center;
       grid-template-columns: repeat(3, 130px);
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      
 
 		button
 		{
@@ -88,6 +102,7 @@
 			align-items: center;
 			justify-content: center;
 			background-color: #007bff;
+         
             &:hover
             {
                background-color: #0056b3;

@@ -10,7 +10,7 @@
 	border-radius: 5px;
 	align-items: center;
 	border: 1px solid #ddd;
-	background: rgb(208, 208, 208);
+	background: rgb(232, 232, 232);
 	justify-content: space-between;
 	transition: background-color 0.3s;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
 	}
  
 	&:hover {
-      background-color: rgb(180, 180, 180);
+      background-color: rgb(201, 201, 201);
 	}
  
 	&.open::after {
@@ -45,15 +45,6 @@
  .accordion_title.active + .accordion_panel {
 	display: block;
  }
-
-
- .accordion_panel {
-	display: none;
-	padding: 10px;
-	border: 1px solid #ddd;
-	background-color: #f9f9f9;
- }
- 
 
  .accordion_title.active + .accordion_panel {
 	display: block;
@@ -86,17 +77,17 @@
    height: 30px;
    border: none;
    border-radius: 5px;
-   background: rgb(190, 190, 190);
+	background-color: #007bff;
 
    cursor: pointer;
    img
    {
       height: 15px;
-      filter: invert(9%) sepia(0%) saturate(172%) hue-rotate(325deg) brightness(93%) contrast(71%);
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(340deg) brightness(100%) contrast(105%);
    }
    &:hover
    {
-      background-color: rgb(180, 180, 180);
-      transform:scale(1.2);
+		transform:scale(1.2);
+      background-color: #0056b3;
    }
 }

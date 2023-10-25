@@ -83,8 +83,8 @@ export class TextHelp
 
      if (sublistElement && textElement && titleArrowElement) {
        item.isOpen = !item.isOpen;
-       sublistElement.classList.toggle('open', item.isOpen);
        textElement.classList.toggle('open', item.isOpen);
+       sublistElement.classList.toggle('open', item.isOpen);
 
        titleArrowElement.innerHTML = item.isOpen ? '▼' : '►';
      }

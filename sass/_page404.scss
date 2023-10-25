@@ -1,15 +1,19 @@
 .container404 
 {
-	display:grid;
-	padding: 20px;
-	flex-wrap: wrap;
-	text-align: center;
-	border-radius: 8px;
-	align-content: center;
-	justify-content: center;
-	background-color: #fff;
-	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
+	top:100px;
+	display:flex;
+	position: absolute;
+	.block
+	{
+		padding: 20px;
+		display: flex;
+		border-radius: 20px;
+		height: max-content;
+		align-items: center; 
+		flex-direction: column;
+		background-color: #fff;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	}
 	h1 {
 		 font-size: 36px;
 		 color: #ff6347;

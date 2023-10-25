@@ -1,0 +1,44 @@
+.step 
+{
+	margin: 0;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	position: relative;
+	border-radius: 5px;
+	text-align: center;
+	background-color: #007bff;
+}
+
+.step::after 
+{
+	content: "";
+	position: absolute;
+	top: calc(50% - 10px); 
+	left: calc(100% + 20px); 
+	border: solid transparent;
+	border-width: 10px;
+	border-left-color: #007bff; 
+	z-index: 1;
+	pointer-events: none; 
+}
+
+.step::before 
+{
+	content: "";
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: calc(50% - 6px); 
+	left: calc(100% + 10px); 
+	z-index: 1;
+	pointer-events: none; 
+	background-color: #007bff;
+}
+
+.step.six::after,
+.step.six::before
+{
+	border: none !important;
+	background: none !important;
+}

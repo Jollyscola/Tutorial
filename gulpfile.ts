@@ -5,7 +5,7 @@ var rename = require('gulp-rename');
 
 
 function buildStyles() {
-  return src('sass/*.scss')
+  return src('sass/**/*.scss')
     .pipe(sass())
     .pipe(rename('styles.css'))
     .pipe(dest('css'))
@@ -13,7 +13,7 @@ function buildStyles() {
 }
 
 function watchTask() {
-  watch(['sass/*.scss'], buildStyles)
+  watch(['sass/**/*.scss'], buildStyles)
 }
 
 exports.default = series(buildStyles, watchTask)

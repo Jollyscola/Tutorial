@@ -1,11 +1,13 @@
 @import "main.scss";
 @import "nav.scss";
 @import "quiz.scss";
-@import "video.scss";
-@import "columen.scss";
+@import "step.scss";
 @import "topbar.scss";
+@import "columen.scss";
 @import "page404.scss";
 @import "texthelp.scss";
-@import "mockdown.scss";
 @import "container.scss";
 @import "radiobutton.scss";
+
+@import "Home/video.scss";
+@import "Home/mockdown.scss";

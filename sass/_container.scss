@@ -2,6 +2,7 @@
 .container
 {
 	display:grid;
+   max-width: 1536px;
 	grid-template-rows: 120px 1fr;
    .container_title
    {

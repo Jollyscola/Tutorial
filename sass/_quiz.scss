@@ -1,72 +1,75 @@
+/* Style for the quiz container */
+.quiz_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
 
-.custom-list 
+.quiz_layout {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+
+.quiz_title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Style for answer buttons */
+.answer-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.answer-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Style for the score */
+.score {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Style for the restart button */
+#restart-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#restart-btn:hover {
+  background-color: #c0392b;
+}
+
+.answers
 {
-   list-style-type: none;
-   padding: 0;
-   font-family: Arial, sans-serif;
- }
- 
- .custom-item {
-   margin-bottom: 15px;
- }
- 
- .custom-title 
- {
-   cursor: pointer;
-   font-weight: bold;
-   color: #333;
-   background-color: #f0f0f0;
-   padding: 10px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   transition: background-color 0.3s ease;
- }
- 
- .custom-text 
- {
-   display: none; 
-   margin-top: 10px;
-   padding: 10px;
-   background-color: #f9f9f9;
-   border: 1px solid #ccc;
-   border-radius: 5px;
- }
- 
- .sub-list {
-   list-style-type: none;
-   padding-left: 20px;
-   margin-top: 5px;
-   border-left: 2px solid #007bff;
-   max-height: 0;
-   overflow: hidden;
-   opacity: 0;
-   transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
- }
- 
- .custom-item.open .sub-list 
- {
-   max-height: 1000px; 
-   opacity: 1;
- }
- 
- .sub-list li 
- {
-   margin-bottom: 5px;
-   color: #333;
-   font-size: 16px;
- }
- 
- .custom-title 
- {
-   cursor: pointer;
- }
- 
- 
- .custom-text.open 
- {
-   display: block; 
- }
- 
- .sub-list.open {
-   display: block; 
- }
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 100px 100px;
+}
