@@ -1,5 +1,5 @@
+import { Tour } from "./pages/Home/tour";
 import { RouteMap } from "./RouteInterface";
-import { Intro } from './pages/Home/Tour/Intro';
 import {Quiz} from './pages/Quiz/Quizquuestion';
 import { videoslider } from './pages/Home/video';
 import { Markdown  } from './pages/Home/markdown';
@@ -9,7 +9,7 @@ export class Route implements EventListenerObject
 {
 
   public quiz: Quiz  = null;
-  public intro: Intro = null;
+  public tour: Tour = null;
   public markdown:Markdown = null;
   public texhhelp: TextHelp = null;
   public gallery: videoslider  = null;
@@ -91,7 +91,7 @@ export class Route implements EventListenerObject
 
       if(path == "/")
       {
-        this.intro = new Intro();
+        this.tour = new Tour();
         this.markdown = new Markdown(this.contentDiv);
         this.gallery = new videoslider(this.contentDiv);
       } 
@@ -101,7 +101,7 @@ export class Route implements EventListenerObject
         this.texhhelp = new TextHelp(this.contentDiv);
       else
       {
-        this.intro = new Intro();
+        this.tour = new Tour();
         this.markdown = new Markdown(this.contentDiv);
         this.gallery = new videoslider(this.contentDiv);
       }
