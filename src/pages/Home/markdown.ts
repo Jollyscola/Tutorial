@@ -114,9 +114,8 @@ export class Markdown
   private createAccordionSection(title: string, content: string): string 
   {
     return `
-      <button class="accordion_title">${title}</button>
-      <div class="accordion_panel">${content}</div>
-    `;
+      <button class="accordion_title"> ` + title + `</button>
+      <div class="accordion_panel">` + content + `</div>`;
   }
 
   private addAccordionButtons(contentElement: HTMLElement): void 

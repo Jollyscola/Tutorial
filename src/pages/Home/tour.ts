@@ -11,14 +11,21 @@ export class Tour implements EventListenerObject
   constructor() 
   {
     this.introbutton = document.querySelector("#intro") as HTMLButtonElement;
+  
     this.iframe = document.querySelector("#myIframe") as HTMLIFrameElement;
-    if (this.iframe) 
+
+    if (this.iframe.contentDocument) 
     {
       this.page = this.iframe.contentDocument.body;
-      this.introDivtour = this.page.querySelectorAll(".introtour") as NodeListOf<HTMLDivElement>;
+      if(this.page.querySelectorAll(".introtour") as NodeListOf<HTMLDivElement>)
+      {
+        this.introDivtour = this.page.querySelectorAll(".introtour") as NodeListOf<HTMLDivElement>;
+        this.loadAndCreate();
+      }
+     
     }
 
-    this.loadAndCreate();
+    
   }
   handleEvent(event: Event): void 
   {

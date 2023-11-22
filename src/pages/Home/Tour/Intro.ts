@@ -41,16 +41,21 @@ export class Intro
 
   private tour(introtourObjects: TourObject[]): void 
   {
-    let steps = introtourObjects.map((introtour) => ({
-      element: introtour.element instanceof HTMLElement
-        ? introtour.element
-        : this.page.querySelector(introtour.element) as HTMLElement,
-      title: introtour.title,
-      intro: introtour.intro,
-    }));
+    let steps = introtourObjects.map((introtour) => 
+      ({
+        element: introtour.element instanceof HTMLElement
+          ? introtour.element
+          : this.page.querySelector(introtour.element) as HTMLElement,
+        title: introtour.title,
+        intro: introtour.intro,
+      })
+    );
 
-    this.intro.setOptions({
-      steps: steps,
-    });
+    this.intro.setOptions
+    (
+      {
+        steps: steps,
+      }
+    );
   }
 }
