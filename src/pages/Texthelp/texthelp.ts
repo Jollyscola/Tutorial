@@ -1,92 +1,72 @@
-let items = [
-   {
-     title: 'Denmark',
-     text: 'Denmark, a Scandinavian gem, is known for its picturesque landscapes and progressive society.',
-     subItems: ['Copenhagen', 'Odense'],
-     isOpen: false,
-   },
-   {
-      title: 'Sweden',
-      text: 'Sweden, often referred to as Sverige in Swedish, is a captivating Nordic nation known for its stunning natural landscapes and progressive values.',
-      subItems: ['Gothenburg', 'Stockholm'],
-      isOpen: false,
-    },
-   // Add more items as needed
- ];
+interface TextHelpItem {
+  title: string;
+  text: string;
+  subItems: string[];
+  isOpen: boolean;
+}
 
-export class TextHelp 
-{
-   private texthelpPage: HTMLElement = null;
+export class TextHelp {
+  private texthelpPage: HTMLElement = null;
 
-   constructor(contentDiv: HTMLElement) 
-   {
+  constructor(contentDiv: HTMLElement, private items: TextHelpItem[]) {
      this.texthelpPage = contentDiv.querySelector('.texthelp-page');
-     this.generateList(items);
-   }
+     this.generateList();
+  }
 
-   private generateList(items: { title: string; text: string; subItems: string[]; isOpen: boolean }[]) 
-   {
-     let html = '';
-
-     for (let item of items) {
-       let itemHtml = this.generateListItem(item.title, item.text, item.subItems, item.isOpen);
-       html += itemHtml;
+  private generateList() {
+     let listHtml = '';
+     for (let item of this.items) {
+        listHtml += this.generateListItem(item);
      }
 
-     let listHtml = this.generateListHtml(html);
+     const fullHtml = this.generateListHtml(listHtml);
 
-     if (this.texthelpPage) 
-     {
-       this.texthelpPage.innerHTML += listHtml;
+     if (this.texthelpPage) {
+        this.texthelpPage.innerHTML = fullHtml;
      }
 
-     let titleElements = this.texthelpPage.querySelectorAll('.custom-title');
-     titleElements.forEach((titleElement, index) => {
-       titleElement.addEventListener('click', () => this.toggleVisibility(index));
-     });
-   }
+     this.attachEventListeners();
+  }
 
-   private generateListItem(title: string, text: string, subItems: string[], isOpen: boolean): string 
-   {
-     let subItemsHtml = subItems.map(subItem => `<li>${subItem}</li>`).join('');
+  private generateListItem(item: TextHelpItem): string {
+     const subItemsHtml = item.subItems.map(subItem => '<li>' + subItem + '</li>').join('');
 
-     let sublistClass = isOpen ? 'sub-list open' : 'sub-list';
+     const containerClass = item.isOpen ? 'texthelp-container open' : 'texthelp-container';
+     const titleArrow = item.isOpen ? '▼' : '►';
 
-     let titleArrow = isOpen ? '▼' : '►';
+     return '<li class="' + containerClass + '">' +
+        '<div class="texthelp-title">' +
+        item.title + ' <span class="title-arrow">' + titleArrow + '</span>' +
+        '</div>' +
+        '<div class="texthelp-content">' +
+        '<div class="texthelp-text ' + (item.isOpen ? 'open' : '') + '">' + item.text + '</div>' +
+        '<ul class="sub-list">' + subItemsHtml + '</ul>' +
+        '</div>' +
+        '</li>';
+  }
 
-     return `<li class="custom-item">
-          <div class="custom-title">
-            ${title} <span class="title-arrow">${titleArrow}</span>
-          </div>
-          <div class="custom-text ${isOpen ? 'open' : ''}">${text}</div>
-          <ul class="${sublistClass}">
-             ${subItemsHtml}
-          </ul>
-       </li>`;
-   }
+  private generateListHtml(itemsHtml: string): string {
+     return '<ul class="texthelp-list">' + itemsHtml + '</ul>';
+  }
 
-   private generateListHtml(itemsHtml: string): string 
-   {
-     return `
-      <ul class="custom-list">
-          ${itemsHtml}
-       </ul>
-      `;
-   }
+  private attachEventListeners() {
+     const titleElements = this.texthelpPage?.querySelectorAll('.texthelp-title');
+     if (titleElements) {
+        titleElements.forEach((titleElement, index) => {
+           titleElement.addEventListener('click', () => this.toggleVisibility(index));
+        });
+     }
+  }
 
-   private toggleVisibility(index: number) 
-   {
-     let item = items[index];
-     let sublistElement = this.texthelpPage.querySelector(`.custom-item:nth-child(${index + 1}) .sub-list`);
-     let textElement = this.texthelpPage.querySelector(`.custom-item:nth-child(${index + 1}) .custom-text`);
-     let titleArrowElement = this.texthelpPage.querySelector(`.custom-item:nth-child(${index + 1}) .title-arrow`);
-
-     if (sublistElement && textElement && titleArrowElement) {
+  private toggleVisibility(index: number) {
+    const item = this.items[index]
+    const titleArrowElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .title-arrow');
+    const contentElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .texthelp-content');
+ 
+    if (titleArrowElement && contentElement) {
        item.isOpen = !item.isOpen;
-       textElement.classList.toggle('open', item.isOpen);
-       sublistElement.classList.toggle('open', item.isOpen);
-
        titleArrowElement.innerHTML = item.isOpen ? '▼' : '►';
-     }
-   }
+       contentElement.classList.toggle('open', item.isOpen);
+    }
+ }
 }

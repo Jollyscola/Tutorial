@@ -5,6 +5,24 @@ import { videoslider } from './pages/Home/video';
 import { Markdown  } from './pages/Home/markdown';
 import { TextHelp } from './pages/Texthelp/texthelp';
 
+
+let items = [
+  {
+    title: 'Denmark',
+    text: 'Denmark, a Scandinavian gem, is known for its picturesque landscapes and progressive society.',
+    subItems: ['Copenhagen', 'Odense'],
+    isOpen: false,
+  },
+  {
+     title: 'Sweden',
+     text: 'Sweden, often referred to as Sverige in Swedish, is a captivating Nordic nation known for its stunning natural landscapes and progressive values.',
+     subItems: ['Gothenburg', 'Stockholm'],
+     isOpen: false,
+   },
+  // Add more items as needed
+];
+
+
 export class Route implements EventListenerObject 
 {
 
@@ -98,7 +116,7 @@ export class Route implements EventListenerObject
       else if (path == "/quiz")
         this.quiz = new Quiz(this.contentDiv);
       else if(path == "/texthelp")
-        this.texhhelp = new TextHelp(this.contentDiv);
+        this.texhhelp = new TextHelp(this.contentDiv,items);
       else
       {
         this.tour = new Tour();
