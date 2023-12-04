@@ -573,7 +573,6 @@ h1 {
   margin: 5px;
   border-radius: 20px;
   background-color: #f4f4f4;
-  overflow: hidden;
 }
 
 .title {
@@ -595,20 +594,30 @@ h1 {
 }
 
 .content-container {
-  height: 250px;
+  width: 550px;
+  height: auto;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
 }
 
 .main-video {
   width: 65%;
+  max-width: 350px;
   margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
 }
-.main-video iframe {
+.main-video iframe,
+.main-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 250px;
+  height: 100%;
+  object-fit: cover; /* Ensure video covers the container */
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -618,16 +627,41 @@ h1 {
   width: 30%;
   height: 100%;
   padding: 0 5px;
-  overflow: hidden;
-  overflow-y: scroll;
+  display: block;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
-.video-thumbnails .thumbnail {
+.video-thumbnails .vid {
   width: 100%;
+  display: flex;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+}
+.video-thumbnails .vid h3 {
+  left: 100%;
+  z-index: 1;
+  width: 100px;
+  color: white;
+  position: absolute;
+  background-color: black;
+}
+.video-thumbnails .vid video {
+  width: 100%;
+}
+.video-thumbnails .vid:hover {
+  scale: 1.06;
+}
+
+.thumbnail {
+  width: 100%;
+  max-width: 200px;
   border-radius: 6px;
   cursor: pointer;
   margin-bottom: 10px;
 }
-.video-thumbnails .thumbnail:hover {
+.thumbnail:hover {
   scale: 1.06;
 }
 

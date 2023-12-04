@@ -19,7 +19,7 @@ export class TextHelp {
         listHtml += this.generateListItem(item);
      }
 
-     const fullHtml = this.generateListHtml(listHtml);
+     let fullHtml = this.generateListHtml(listHtml);
 
      if (this.texthelpPage) {
         this.texthelpPage.innerHTML = fullHtml;
@@ -29,10 +29,10 @@ export class TextHelp {
   }
 
   private generateListItem(item: TextHelpItem): string {
-     const subItemsHtml = item.subItems.map(subItem => '<li>' + subItem + '</li>').join('');
+     let subItemsHtml = item.subItems.map(subItem => '<li>' + subItem + '</li>').join('');
 
-     const containerClass = item.isOpen ? 'texthelp-container open' : 'texthelp-container';
-     const titleArrow = item.isOpen ? '▼' : '►';
+     let containerClass = item.isOpen ? 'texthelp-container open' : 'texthelp-container';
+     let titleArrow = item.isOpen ? '▼' : '►';
 
      return '<li class="' + containerClass + '">' +
         '<div class="texthelp-title">' +
@@ -50,7 +50,7 @@ export class TextHelp {
   }
 
   private attachEventListeners() {
-     const titleElements = this.texthelpPage?.querySelectorAll('.texthelp-title');
+     let titleElements = this.texthelpPage?.querySelectorAll('.texthelp-title');
      if (titleElements) {
         titleElements.forEach((titleElement, index) => {
            titleElement.addEventListener('click', () => this.toggleVisibility(index));
@@ -59,9 +59,9 @@ export class TextHelp {
   }
 
   private toggleVisibility(index: number) {
-    const item = this.items[index]
-    const titleArrowElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .title-arrow');
-    const contentElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .texthelp-content');
+    let item = this.items[index]
+    let titleArrowElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .title-arrow');
+    let contentElement = this.texthelpPage?.querySelector('.texthelp-container:nth-child(' + (index + 1) + ') .texthelp-content');
  
     if (titleArrowElement && contentElement) {
        item.isOpen = !item.isOpen;

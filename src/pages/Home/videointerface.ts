@@ -1,6 +1,6 @@
 interface Video 
 {
-  image: string;
+  video: string;
   title: string;
   videoIds: string;
 }

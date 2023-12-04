@@ -1,10 +1,10 @@
 export class Quiz 
 {
     private score: number = null;
+    private scoreText: HTMLSpanElement = null;
     private currentQuestionIndex: number = null;
     private restartButton: HTMLButtonElement = null;
     private questionText: HTMLParagraphElement = null;
-    private scoreText: HTMLSpanElement = null;
     private answerButtons: NodeListOf<HTMLButtonElement> = null;
 
     private questions: 
