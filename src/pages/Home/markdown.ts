@@ -36,15 +36,15 @@ export class Markdown
     return marked.parse(markdown);
   }
 
-  private createCopyButton(codeBlock: HTMLPreElement): HTMLButtonElement 
+  private createCopyButton(codeBlock: HTMLPreElement): HTMLDivElement 
   {
+    let copyButtondiv = document.createElement('div') as HTMLDivElement;
     let copyButton = document.createElement('button') as HTMLButtonElement;
-    let copyIcon = document.createElement('img');
 
-    copyIcon.alt = "copy";
-    copyIcon.src = "images/copy.png";
-    copyButton.classList.add('copy-button');
-    copyButton.appendChild(copyIcon);
+    copyButton.textContent = "Copy code";
+    copyButtondiv.classList.add("copybutton");
+    
+    copyButtondiv.appendChild(copyButton);
 
     copyButton.addEventListener('click', () => 
     {
@@ -52,7 +52,7 @@ export class Markdown
       this.copyWithTimeout(copy, copyButton);
     });
 
-    return copyButton;
+    return copyButtondiv;
   }
 
   private copyWithTimeout(text: string, button: HTMLButtonElement): void 
@@ -73,20 +73,13 @@ export class Markdown
 
   private handleCopySuccess(button: HTMLButtonElement): void 
   {
-    let copyIcon = button.querySelector('img');
-    if (copyIcon) {
-      copyIcon.alt = 'copied';
-      copyIcon.src = 'images/copied.png';
-    }
+    if (button) button.textContent = 'Copied';
+
   }
 
   private resetCopyButton(button: HTMLButtonElement): void 
   {
-    let copyIcon = button.querySelector('img');
-    if (copyIcon) {
-      copyIcon.alt = 'copy';
-      copyIcon.src = 'images/copy.png';
-    }
+    if (button) button.textContent = 'Copy code';
   }
 
   private renderAccordionContent(markdown: string): string 
@@ -128,10 +121,13 @@ export class Markdown
             let panel = button.nextElementSibling as HTMLElement;
             let isActive = button.classList.contains('open');
           
-            if (isActive) {
+            if (isActive) 
+            {
               panel.style.display = 'none';
               button.classList.remove('open');
-            } else {
+            } 
+            else 
+            {
               panel.style.display = 'block';
               button.classList.add('open');
             }
@@ -141,15 +137,21 @@ export class Markdown
 
   private replaceCodeBlocks(contentElement: HTMLElement): void 
   {
-    let codeBlocks = contentElement.querySelectorAll('pre');
+    const codeBlocks = contentElement.querySelectorAll('pre') as NodeListOf<HTMLPreElement>;
 
-    codeBlocks.forEach(codeBlock => {
+    codeBlocks.forEach(codeBlock => 
+      {
       let codeContainer = document.createElement('div');
       codeContainer.className = 'markdown_container';
-      codeBlock.parentNode?.replaceChild(codeContainer, codeBlock);
 
-      codeContainer.appendChild(codeBlock);
-      codeContainer.appendChild(this.createCopyButton(codeBlock));
+      let copyButton = this.createCopyButton(codeBlock);
+      codeContainer.appendChild(copyButton);
+
+
+      let codeBlockToAppend  = codeBlock.cloneNode(true) as HTMLPreElement;
+      codeContainer.appendChild(codeBlockToAppend);
+
+      codeBlock.parentNode?.replaceChild(codeContainer, codeBlock);
     });
   }
 

@@ -2,7 +2,7 @@ interface Video
 {
   video: string;
   title: string;
-  videoIds: string;
+  snippet: string;
 }
 
 export { Video}

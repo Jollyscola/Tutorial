@@ -31,7 +31,8 @@
  }
  
 
- .accordion_panel {
+ .accordion_panel 
+ {
 	display: none;
 	padding: 10px;
 	border: 1px solid #ddd;
@@ -42,11 +43,8 @@
  }
  
 
- .accordion_title.active + .accordion_panel {
-	display: block;
- }
-
- .accordion_title.active + .accordion_panel {
+ .accordion_title.active + .accordion_panel 
+ {
 	display: block;
  }
 
@@ -59,16 +57,24 @@
    margin: 10px 0;
    position: relative;
    align-items: center;
-   border: 1px solid #ccc;
-   background-color: #f5f5f5;
-   grid-template-columns: 1fr max-content; 
+	border: solid gray 1px;
+  	background-color: rgb(56, 56, 56);
+
+	button
+	{
+		max-width: 100px;
+  		// position: absolute;
+		background-color: transparent;
+		color:gray
+	}
 }
 
 .markdown_container pre 
 {
+   margin: 0;
+	color: white;
    max-width: 400px;
    white-space: pre-wrap;
-   margin: 0;
 }
 
 .copy-button 
@@ -77,7 +83,7 @@
    height: 30px;
    border: none;
    border-radius: 5px;
-	background-color: #007bff;
+	background-color: #c3c3c3;
 
    cursor: pointer;
    img

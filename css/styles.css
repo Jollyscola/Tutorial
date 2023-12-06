@@ -337,12 +337,6 @@ h1 {
   max-height: 800px;
   overflow-y: scroll;
 }
-.columen .columen_left pre {
-  padding: 5px;
-  border: solid gray 1px;
-  background-color: rgb(56, 56, 56);
-  color: white;
-}
 .columen .block {
   height: 100%;
   display: grid;
@@ -574,57 +568,50 @@ h1 {
   border-radius: 20px;
   background-color: #f4f4f4;
 }
-
-.title {
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #333;
+.video_container h2 {
+  margin-bottom: 2px;
 }
-
-#youtube-title {
-  margin: 5px 0;
-  font-size: 24px;
-}
-
-.info {
-  color: #555;
-  margin: 5px 0;
-  text-align: center;
+.video_container .guide {
+  margin: 10px 0;
 }
 
 .content-container {
+  gap: 5px;
   width: 550px;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  height: 100%;
   padding: 20px;
 }
 
 .main-video {
-  width: 65%;
-  max-width: 350px;
+  width: 100%;
+  min-height: 100%;
+  max-width: 300px;
   margin-bottom: 20px;
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
 }
-.main-video iframe,
 .main-video video {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   object-fit: cover; /* Ensure video covers the container */
   border: none;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
+.main-video .title {
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  justify-content: left;
+}
 
 .video-thumbnails {
-  width: 30%;
+  width: 100%;
   height: 100%;
   padding: 0 5px;
   display: block;
@@ -637,32 +624,25 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
   position: relative;
-  margin-bottom: 10px;
+  padding: 10px;
+  gap: 5px;
 }
 .video-thumbnails .vid h3 {
   left: 100%;
+  margin: 0px;
+  width: 100%;
   z-index: 1;
-  width: 100px;
+  line-height: 2;
+  font-size: 16px;
+  justify-content: left;
+  transition: opacity 0.3s;
+}
+.video-thumbnails .vid.active {
   color: white;
-  position: absolute;
-  background-color: black;
+  background: #2980b9;
 }
 .video-thumbnails .vid video {
-  width: 100%;
-}
-.video-thumbnails .vid:hover {
-  scale: 1.06;
-}
-
-.thumbnail {
-  width: 100%;
-  max-width: 200px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-.thumbnail:hover {
-  scale: 1.06;
+  width: 70px;
 }
 
 .accordion_title {
@@ -708,10 +688,6 @@ h1 {
   display: block;
 }
 
-.accordion_title.active + .accordion_panel {
-  display: block;
-}
-
 .markdown_container {
   display: grid;
   grid-gap: 10px;
@@ -720,15 +696,20 @@ h1 {
   margin: 10px 0;
   position: relative;
   align-items: center;
-  border: 1px solid #ccc;
-  background-color: #f5f5f5;
-  grid-template-columns: 1fr max-content;
+  border: solid gray 1px;
+  background-color: rgb(56, 56, 56);
+}
+.markdown_container button {
+  max-width: 100px;
+  background-color: transparent;
+  color: gray;
 }
 
 .markdown_container pre {
+  margin: 0;
+  color: white;
   max-width: 400px;
   white-space: pre-wrap;
-  margin: 0;
 }
 
 .copy-button {
@@ -736,7 +717,7 @@ h1 {
   height: 30px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #c3c3c3;
   cursor: pointer;
 }
 .copy-button img {
