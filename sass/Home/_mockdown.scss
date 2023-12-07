@@ -40,6 +40,51 @@
 	border-radius: 5px;
 	margin-top: 5px; 
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+	
+	.markdown_container 
+	{
+		display: grid;
+		grid-gap: 10px;
+		border-radius: 5px;
+		margin: 10px 0;
+		position: relative;
+		align-items: center;
+		border: solid gray 1px;
+		background-color: rgb(56, 56, 56);
+
+		
+
+		.copyDIV
+		{
+			display: flex;
+			justify-content: right;
+			background-color: rgb(98, 99, 115);
+			padding: 5px;
+			button
+			{
+				color:white;
+				border: none;
+				cursor: pointer;
+				max-width: 100px;
+				margin-right:5px;
+				background-color: transparent;
+				&:focus,
+				&:hover
+				{
+					transform: scale(1.06);
+				}
+			}
+		}
+		pre 
+		{
+			margin: 0;
+			padding:5px;
+			color: white;
+			max-width: 400px;
+			white-space: pre-wrap;
+		}
+	}
  }
  
 
@@ -47,53 +92,3 @@
  {
 	display: block;
  }
-
-.markdown_container 
-{
-   display: grid;
-   grid-gap: 10px;
-   border-radius: 5px;
-   padding: 10px;
-   margin: 10px 0;
-   position: relative;
-   align-items: center;
-	border: solid gray 1px;
-  	background-color: rgb(56, 56, 56);
-
-	button
-	{
-		max-width: 100px;
-  		// position: absolute;
-		background-color: transparent;
-		color:gray
-	}
-}
-
-.markdown_container pre 
-{
-   margin: 0;
-	color: white;
-   max-width: 400px;
-   white-space: pre-wrap;
-}
-
-.copy-button 
-{
-   width: 30px;
-   height: 30px;
-   border: none;
-   border-radius: 5px;
-	background-color: #c3c3c3;
-
-   cursor: pointer;
-   img
-   {
-      height: 15px;
-      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(340deg) brightness(100%) contrast(105%);
-   }
-   &:hover
-   {
-		transform:scale(1.2);
-      background-color: #0056b3;
-   }
-}

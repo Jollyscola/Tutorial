@@ -4,21 +4,41 @@ import * as marked from 'marked';
 
 export class Markdown
 {
+  private url:string = null;
+  private contentElement:HTMLDivElement = null;
   constructor(contentDiv: HTMLElement) 
   {
-    let contentElement = contentDiv.querySelector("#readme_content") as HTMLDivElement;
 
-    if (contentElement) 
-      this.initializeAccordion(contentElement);
+    this.url = "documentation/welcome.md";
+    this.contentElement = contentDiv.querySelector("#readme_content") as HTMLDivElement;
+
+    if (this.contentElement) 
+      this.initialize();
     else 
       console.error('content fandt ikke.');
   }
 
-  private async fetchMarkdownContent(url: string): Promise<string> 
+  private initialize(): void 
+  {
+    this.fetchContent()
+    .then(markdown => 
+    {
+      let htmlContent = this.renderAccordionContent(markdown);
+      this.contentElement.innerHTML = htmlContent;
+      this.addAccordionButtons();
+      this.replaceCodeBlocks();
+    })
+    .catch(error => 
+    {
+      console.error('Error with content:', error);
+    });
+  }
+
+  private async fetchContent(): Promise<string> 
   {
     try 
     {
-      let response = await fetch(url);
+      let response = await fetch(this.url);
       if (!response.ok) 
         throw new Error(`Network var ikke okay: ${response.status}`);
 
@@ -31,18 +51,13 @@ export class Markdown
     }
   }
 
-  private renderMarkdownToHTML(markdown: string): string 
-  {
-    return marked.parse(markdown);
-  }
-
   private createCopyButton(codeBlock: HTMLPreElement): HTMLDivElement 
   {
     let copyButtondiv = document.createElement('div') as HTMLDivElement;
     let copyButton = document.createElement('button') as HTMLButtonElement;
 
     copyButton.textContent = "Copy code";
-    copyButtondiv.classList.add("copybutton");
+    copyButtondiv.classList.add("copyDIV");
     
     copyButtondiv.appendChild(copyButton);
 
@@ -61,9 +76,11 @@ export class Markdown
     navigator.clipboard.writeText(text)
       .then(() => 
       {
-        this.handleCopySuccess(button);
+        if (button) button.textContent = 'Copied';
+
         setTimeout(() => {
-          this.resetCopyButton(button);
+          if (button) button.textContent = 'Copy code';
+
         }, timeoutDuration);
       })
       .catch((error) => {
@@ -71,31 +88,22 @@ export class Markdown
       });
   }
 
-  private handleCopySuccess(button: HTMLButtonElement): void 
-  {
-    if (button) button.textContent = 'Copied';
-
-  }
-
-  private resetCopyButton(button: HTMLButtonElement): void 
-  {
-    if (button) button.textContent = 'Copy code';
-  }
-
   private renderAccordionContent(markdown: string): string 
   {
 
     let sections = markdown.split(/^##\s+/gm);
-    let mainTitle = this.renderMarkdownToHTML(sections.shift() || '');
+    let mainTitle = marked.parse(sections.shift() || '');
+  
 
     let htmlContent = `<h1 class="title">${mainTitle}</h1>`;
 
     let sectionHTML = sections.map((section) => 
     {
         let lines = section.split('\n');
-        let title = this.renderMarkdownToHTML(lines[0].trim());
+        let title = marked.parse(lines[0].trim());
+
         lines.shift();
-        let content = this.renderMarkdownToHTML(lines.join('\n'));
+        let content = marked.parse(lines.join('\n'));
 
         return this.createAccordionSection(title, content);
     })
@@ -111,9 +119,9 @@ export class Markdown
       <div class="accordion_panel">` + content + `</div>`;
   }
 
-  private addAccordionButtons(contentElement: HTMLElement): void 
+  private addAccordionButtons(): void 
   {
-    let buttons = contentElement.querySelectorAll('.accordion_title') as NodeListOf<HTMLButtonElement>;
+    let buttons = this.contentElement.querySelectorAll('.accordion_title') as NodeListOf<HTMLButtonElement>;
     for (let button of buttons) 
     {
         button.addEventListener('click', () => 
@@ -135,9 +143,9 @@ export class Markdown
     }
   }
 
-  private replaceCodeBlocks(contentElement: HTMLElement): void 
+  private replaceCodeBlocks(): void 
   {
-    const codeBlocks = contentElement.querySelectorAll('pre') as NodeListOf<HTMLPreElement>;
+    let codeBlocks = this.contentElement.querySelectorAll('pre') as NodeListOf<HTMLPreElement>;
 
     codeBlocks.forEach(codeBlock => 
       {
@@ -153,21 +161,5 @@ export class Markdown
 
       codeBlock.parentNode?.replaceChild(codeContainer, codeBlock);
     });
-  }
-
-  public initializeAccordion(contentElement: HTMLElement): void 
-  {
-    this.fetchMarkdownContent('documentation/welcome.md')
-      .then(markdown => 
-      {
-        let htmlContent = this.renderAccordionContent(markdown);
-        contentElement.innerHTML = htmlContent;
-        this.addAccordionButtons(contentElement);
-        this.replaceCodeBlocks(contentElement);
-      })
-      .catch(error => 
-      {
-        console.error('Error with content:', error);
-      });
   }
 }
